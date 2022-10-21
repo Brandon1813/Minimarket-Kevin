@@ -1,0 +1,390 @@
+/* INICIA CSS BRANDON */
+:root{
+    --azul-primario:#4285F4;
+    --gris: #1f2d3d;
+    --azul-hover:#153a74;
+}
+    
+h1{
+    color: #153a74;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: 0%;
+    min-height: 100vh;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow-x: hidden;
+   
+}
+  
+    
+/* NAV */
+#nav-container{
+    display: flex;
+    width: 100%;
+    background-color: var(--azul-primario);
+    position: relative;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px 30px;
+}
+nav img{
+    height: 130px;
+    
+}
+
+nav .icon{
+    font-size: 35px;
+    font-weight:700;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+}
+
+nav ol{
+    display: flex;
+    list-style: none;
+    margin: auto 0;
+    margin-right: 50px;
+    
+}
+
+nav ol li{
+    margin: 0 2px;
+    
+}
+ 
+nav ol li a{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+}
+
+nav ol li:hover a{
+    background-color: white;
+    color:var(--azul-primario);
+    border-radius: 3px;
+    transition: all 0.8s;
+}
+ 
+
+nav .search-box{
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    line-height: 35px;
+}
+
+nav .search-box input{
+    border: none;
+    outline:none;
+    background: white;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    width: 350px;
+}
+
+
+nav .search-box span{
+    color: var(--azul-primario);
+    font-size: 20px;
+    background: white;
+    height: 55%;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+nav .search-box span:hover{
+    color: rgb(255, 255, 255);
+}
+
+nav .search-box span::after{
+    height: 100%;
+    width: 0%;
+    content: '';
+    background:grey;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    z-index:-1;
+    transition: 0.3s;
+}
+
+nav .search-box span:hover::after{
+    width: 100%;
+}
+
+nav .bar{
+    position: relative;
+    margin: auto;
+    display: none;
+}
+
+nav .bar span{
+    position: absolute;
+    color: white;
+    font-size: 35px;
+}
+    
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    display: none;
+}
+/* MEDIA NAV */
+@media screen and (max-width: 1250px){
+
+    #nav-container{
+        display: block;
+        padding: 0;
+    }
+    nav .icon{
+        display: inline-block;
+        padding: 15 30px;
+        display: flex;
+    }
+    
+    
+    
+    nav .search-box{
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+    
+    nav .search-box input{
+        width: 90%;
+    }
+    nav ol{
+        display: flex;
+        flex-direction: column;
+        background: var(--azul-primario);
+        height: 0;
+        visibility: hidden;
+            transition: 0.3s;
+        }
+        
+        nav ol li{
+            text-align: center;
+            transition: 0.3s 0.1S all;
+            opacity: 0;
+        }
+        nav ol li a{
+            color: black;
+            font-size: 28px;
+            padding: 25px;
+            display: block;
+        }
+        nav ol li:nth-child(1){
+            transform: translateX(-150px);
+        }
+        nav ol li:nth-child(2){
+            transform: translateX(-200px);
+        }
+        nav ol li:nth-child(3){
+            transform: translateX(-250px);
+        }
+        nav ol li:nth-child(4){
+            transform: translateX(-300px);
+        }
+        nav ol li:nth-child(5){
+            transform: translateX(-350px);
+        }
+        
+        
+        nav .bar{
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 80px;
+            cursor: pointer;
+        }
+        
+        nav .bar #times{
+            display: none;
+        }
+        
+        #check:checked ~ #nav-container .bar #times{
+            display: block;
+        }
+        #check:checked ~ #nav-container .bar #bars{
+            display: none;
+        }
+
+        #check:checked ~ nav ol{
+            visibility: visible;
+            height: 465px;
+        }
+        
+        
+        #check:checked ~ nav ol li:nth-child(1),
+        #check:checked ~ nav ol li:nth-child(2),
+        #check:checked ~ nav ol li:nth-child(3),
+        #check:checked ~ nav ol li:nth-child(4),
+        #check:checked ~ nav ol li:nth-child(5){
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+/* /NAV */
+
+
+/* CONTENIDO */
+.container-card{
+    width: 100%;
+    max-width: 1200px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+   
+    
+}
+    
+   
+
+.container-card .card{
+    width: 330px;
+    height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+    
+}
+.container-card .card:hover{
+    transform: translateY(-30px);
+    box-shadow: 0 12px 16px var(--azul-hover);
+}
+
+.container-card img{
+    width: 320px;
+    height: 220px;
+}
+ 
+.container-card h3{
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+ 
+.container-card p{
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Dosis', sans-serif;
+}
+
+.container-card a{
+    font-size:20px;
+    font-weight: 500;
+    text-decoration: none;
+    color:grey;
+}
+.container-card a:hover{
+    color:var(--azul-primario);
+}
+    
+/* /CONTENIDO */
+/* FOOTER */
+footer{
+    background-color:var(--azul-primario);
+    width: 100%;
+    height:50px;
+    float: left;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+    
+    
+footer strong a{
+    color: rgb(233, 230, 230);
+}
+    
+
+footer  .logo{
+    height: 50px;
+    float: left;
+}
+
+footer p{
+    color: white;
+}
+/* /FOOTER  */
+
+
+
+/* FIN CSS BRANDON */
+    
+    
+
+
+    
+    
+    
+
+
+
+
+
+
+  
+      
+
+
+
+
+    
+    
+    
+
+
+    
+    
+    
+
+    
+   
+
+
+    
+
+    
+
+
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+
