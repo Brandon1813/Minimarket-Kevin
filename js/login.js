@@ -1,4 +1,4 @@
-/* const nombre_completo = document.getElementById("nombre_completo")
+const nombre_completo = document.getElementById("nombre_completo")
 const correo = document.getElementById("correo")
 const usuario = document.getElementById("usuario")
 const contrasena = document.getElementById("cotrasena")
@@ -9,4 +9,4 @@ form.addEventListener("submit", e=>{
     if(nombre_completo.nodeValue.length <6.){
         alert ("Nombre muy corto")
     }
-}) */
+})

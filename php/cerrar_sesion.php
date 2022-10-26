@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-session_destroy();
-header("location: ../iniciar.php");
+session_destroy(); 
+header("location: ./iniciar.php");
 
 
 ?>

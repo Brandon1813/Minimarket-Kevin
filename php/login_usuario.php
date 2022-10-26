@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-include 'conexion_login.php';
+include_once 'conexion_login.php';
 
-$db = mysqli_connect("localhost", "root", "", "login_register_db");
+$db = mysqli_connect("localhost", "root", "", "minimarket_kevin");
 
 $correo = $_POST['correo'];
 $contrasena= $_POST['contrasena'];
@@ -11,11 +11,11 @@ $contrasena= $_POST['contrasena'];
 
 
 
-$validar_login = mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$correo' and contrasena='$contrasena'");
+$validar_login = mysqli_query($db, "SELECT * FROM usuario WHERE correo='$correo' and contrasena='$contrasena'");
 
 if(mysqli_num_rows($validar_login) >0){
     $_SESSION['usuario']= $correo;
-    header("location: bienvenida.php"); /* pendiente*/
+    header("location: ../index.php"); 
     exit();
 }else{
     echo '

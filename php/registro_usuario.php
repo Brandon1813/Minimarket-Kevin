@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost", "root", "", "login_register_db");
+$db = mysqli_connect("localhost", "root", "", "minimarket_kevin");
 
 if (!$db) {
     echo "Error al conectar la base de datos";
@@ -12,11 +12,11 @@ $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 /* $password = md5($contrasena); */
 
-$query=("INSERT INTO usuarios(nombre_completo,correo,usuario,contrasena)VALUE ('" . $nombre_completo . "', '" . $correo . "', '" . $usuario . "', '" . $contrasena . "')");
+$query=("INSERT INTO usuario(nombre_completo,correo,usuario,contrasena)VALUE ('" . $nombre_completo . "', '" . $correo . "', '" . $usuario . "', '" . $contrasena . "')");
 
 /*Verificar Correo no Repeat bd*/
 
-$verificar_correo= mysqli_query($db, "SELECT * FROM usuarios WHERE correo='$correo'");
+$verificar_correo= mysqli_query($db, "SELECT * FROM usuario WHERE correo='$correo'");
 if(mysqli_num_rows($verificar_correo) > 0){
   echo '
         <script>
@@ -29,7 +29,7 @@ if(mysqli_num_rows($verificar_correo) > 0){
 
 /*Verificar Usuario no Repeat bd*/
 
-$verificar_usuario= mysqli_query($db, "SELECT * FROM usuarios WHERE usuario='$usuario'");
+$verificar_usuario= mysqli_query($db, "SELECT * FROM usuario WHERE usuario='$usuario'");
 if(mysqli_num_rows($verificar_usuario) > 0){
   echo '
         <script>
