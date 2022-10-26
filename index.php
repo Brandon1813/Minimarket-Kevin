@@ -22,7 +22,7 @@ session_destroy();
     <title>MiniMarket</title>
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/estilos.css">
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/css/estilos.css" type="image/x-icon">
     <script src="https://kit.fontawesome.com/acaed10690.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Lora:ital@1&family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
