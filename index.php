@@ -1,5 +1,17 @@
 <?php
+session_start(); //inicio sesion//
 
+if(!isset($_SESSION['usuario'])){
+    echo '
+    <script>
+        alert ("Por favor  debes de iniciar sesión");
+        window.location = "iniciar.php";
+    </script>
+    ';
+    session_destroy(); // cerrar sesion //
+    die(); 
+}
+session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +42,7 @@
         </div> -->
         <ol>
            
-            <li><a href="#">👤Login</a></li>
+            <li><a href="iniciar.php">👤Cerrar sesión</a></li>
         </ol>
         <label for="check" class="bar">
             <span class="fa fa-bars" id="bars"></span>

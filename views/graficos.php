@@ -107,7 +107,7 @@
           labels  : fecha,
           datasets: [
               {
-              label               : 'Valor',
+              label               : 'Productos',
               backgroundColor     : 'rgba(244, 118, 123)',
               borderColor         : 'rgba(244, 118, 123)',
               pointRadius          : true,

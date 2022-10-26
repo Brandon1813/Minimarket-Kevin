@@ -144,7 +144,7 @@ $("#filtro").on("click", function(e){
       loaderF(false);
     });  
   }else{
-    $("#loaderFiltro").html('<p style="color:red;  font-weight:bold;">Debe seleccionar ambas fechas</p>');
+    $("#loaderFiltro").html('<p style="color:red;  font-weight:bold;">¡Seleccione las dos fechas para filtrar!</p>');
   }
 } );
 
