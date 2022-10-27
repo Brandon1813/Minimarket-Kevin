@@ -9,6 +9,7 @@ if(!isset($_SESSION['usuario'])){
         die(); 
         session_destroy(); // cerrar sesion //
     }
+        
 session_destroy();
 ?>
 
@@ -59,9 +60,9 @@ session_destroy();
      
         <div class="card">
             <img src="./assets/img/categorias.png" alt="">
-            <h3>Categorías</h3>  
+            <h3>Productos</h3>  
             <p>SELECCIONE <br>La categoría</p>
-            <a href="#">Ir a categorías</a>
+            <a href="./products.php">Ir a categorías</a>
         </div>
      
         <div class="card">

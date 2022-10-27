@@ -42,7 +42,7 @@ $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
                 <div class="collapse navbar-collapse" id="navBarTop">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-dark" href="#">Inicio </a>
+                            <a class="nav-link active text-dark" href="./index.php">Inicio </a>
                         </li>
 
                         
