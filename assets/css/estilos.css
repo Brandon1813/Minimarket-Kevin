@@ -1,4 +1,15 @@
 
+ /* <ESTILOS YEISON> */
+main > .container {
+    padding: 30px 0;
+  }
+  .avatar{
+    height: 80px;
+    width: 80px;
+    margin: 0 5px 0 0;
+  }
+  /* </FINALIZA ESTILOS YEISON> */
+
 /* INICIA CSS FORMULARIO LOGIN Y REGISTRO BRYAN*/
 *{
     margin:0;
@@ -531,8 +542,6 @@ footer p{
 }
 /* /FOOTER  */
 
-
-
 /* FIN CSS BRANDON */
 
 
@@ -580,9 +589,6 @@ footer p{
 
 
     
-
-
-
 
 
 
