@@ -1,19 +1,3 @@
-<?php
-session_start(); //inicio sesion//
-if(!isset($_SESSION['usuario'])){
-        echo '
-        <script>
-        window.location = "iniciar.php";
-        </script>
-        ';
-        die(); 
-        session_destroy(); // cerrar sesion //
-    }
-        
-session_destroy();
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +7,10 @@ session_destroy();
     <title>MiniMarket</title>
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/estilos.css">
-    <link rel="shortcut icon" href="./assets/css/estilos.css" type="image/x-icon">
+    <link rel=" icon" href="assets/img/logo.png">
     <script src="https://kit.fontawesome.com/acaed10690.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Lora:ital@1&family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-
-
 </head>
 <body>
      <!-- ENCABEZADO -->
@@ -69,7 +51,7 @@ session_destroy();
             <img src="./assets/img/inventario.webp" alt="">
             <h3>Inventario</h3>  
             <p>GESTIÓNE <br>los productos</p>
-            <a href="#">Ir a inventario</a>
+            <a href="../gestion_de_inventario/index_inv.php">Ir a inventario</a>
         </div>
          </div>     
          <!-- /CONTENIDO -->

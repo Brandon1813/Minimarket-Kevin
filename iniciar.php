@@ -1,7 +1,7 @@
 <?php
 //cuando la sesion está iniciada lo envia a bienvenida.php/login//
 session_start();
-if(isset($_SESSION['usuario'])){
+if(isset($_SESSION['iniciar'])){
     header("location: index.php");
 }
 
@@ -15,6 +15,7 @@ if(isset($_SESSION['usuario'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="./assets/css/estilos.css">
+    <link rel=" icon" href="assets/img/user.png">
 </head>
 <body>  
        

@@ -2,7 +2,7 @@
 
 session_start();
 session_destroy(); 
-header("location: ./iniciar.php");
+header("location: ../iniciar.php");
 
 
 ?>
