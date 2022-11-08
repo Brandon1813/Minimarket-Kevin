@@ -22,7 +22,7 @@
 		</p>
 
 		<p class="has-text-centered mb-4 mt-3">
-			<a href="#"  button type="submit" class="button is-info is-rounded">atras</button> </a>
+			<a href="../index.php"  button type="submit" class="button is-info is-rounded">atras</button> </a>
 		</p>
 
 		<?php

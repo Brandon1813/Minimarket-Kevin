@@ -53,7 +53,7 @@
             <img src="./assets/img/inventario.webp" alt="">
             <h3>Inventario</h3>  
             <p>GESTIÓNE <br>los productos</p>
-            <a href="../gestion_de_inventario/index_inv.php">Ir a inventario</a>
+            <a href="./gestion-de-inventario/index.php">Ir a inventario</a>
         </div>
          </div>     
          <!-- /CONTENIDO -->
