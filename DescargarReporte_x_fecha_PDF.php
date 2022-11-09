@@ -27,14 +27,14 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, 'mm', 'Letter', true, 'UTF-8', false);
 //Establecer margenes del PDF
 $pdf->SetMargins(20, 35, 25);
 $pdf->SetHeaderMargin(20);
-$pdf->setPrintFooter(false);
+$pdf->setPrintFooter(true);
 $pdf->setPrintHeader(true); //Eliminar la linea superior del PDF por defecto
 $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM); //Activa o desactiva el modo de salto de página automático
  
 //Informacion del PDF
-$pdf->SetCreator('UrianViera');
-$pdf->SetAuthor('UrianViera');
-$pdf->SetTitle('Informe de ventas');
+$pdf->SetCreator('Brandon');
+$pdf->SetAuthor('ADSI-510');
+$pdf->SetTitle('Reporte de ventas');
  
 /** Eje de Coordenadas
  *          Y
@@ -54,7 +54,7 @@ $pdf->SetTitle('Informe de ventas');
 $pdf->AddPage();
 $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
 $pdf->SetXY(150, 20);
-$pdf->Write(0, 'Código: 0014ABC');
+$pdf->Write(0, 'Código: 001');
 $pdf->SetXY(150, 25);
 $pdf->Write(0, 'Fecha: '. date('d-m-Y'));
 $pdf->SetXY(150, 30);
@@ -64,10 +64,8 @@ $canal ='WebDeveloper';
 $pdf->SetFont('helvetica','B',20); //Tipo de fuente y tamaño de letra
 $pdf->SetXY(15, 20); //Margen en X y en Y
 $pdf->SetTextColor(66, 133, 244);
-$pdf->Write(0, 'Minimarket "Kevin"');
-
-
-
+$pdf->Write(0, 'Minimarket 
+"Kevin"');
 
 
 $pdf->Ln(35); //Salto de Linea
