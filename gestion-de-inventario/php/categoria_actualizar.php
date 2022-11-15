@@ -66,7 +66,7 @@
     /*== Verificando nombre ==*/
     if($nombre!=$datos['categoria_nombre']){
 	    $check_nombre=conexion();
-	    $check_nombre=$check_nombre->query("SELECT categoria_nombre FROM categoria WHERE categoria_nombre='$nombre'");
+	    $check_nombre=$check_nombre->query("SELECT categoria_nombre FROM categoriaInv WHERE categoria_nombre='$nombre'");
 	    if($check_nombre->rowCount()>0){
 	        echo '
 	            <div class="notification is-danger is-light">
@@ -82,7 +82,7 @@
 
     /*== Actualizar datos ==*/
     $actualizar_categoria=conexion();
-    $actualizar_categoria=$actualizar_categoria->prepare("UPDATE categoria SET categoria_nombre=:nombre,categoria_ubicacion=:ubicacion WHERE categoria_id=:id");
+    $actualizar_categoria=$actualizar_categoria->prepare("UPDATE categoriaInv SET categoria_nombre=:nombre,categoria_ubicacion=:ubicacion WHERE categoria_id=:id");
 
     $marcadores=[
         ":nombre"=>$nombre,

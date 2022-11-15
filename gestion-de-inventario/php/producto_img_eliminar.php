@@ -48,7 +48,7 @@
 
 	/*== Actualizando datos ==*/
     $actualizar_producto=conexion();
-    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_foto=:foto WHERE producto_id=:id");
+    $actualizar_producto=$actualizar_producto->prepare("UPDATE productoInv SET producto_foto=:foto WHERE producto_id=:id");
 
     $marcadores=[
         ":foto"=>"",

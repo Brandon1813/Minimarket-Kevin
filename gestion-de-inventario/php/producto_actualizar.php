@@ -89,7 +89,7 @@
     /*== Verificando codigo ==*/
     if($codigo!=$datos['producto_codigo']){
 	    $check_codigo=conexion();
-	    $check_codigo=$check_codigo->query("SELECT producto_codigo FROM producto WHERE producto_codigo='$codigo'");
+	    $check_codigo=$check_codigo->query("SELECT producto_codigo FROM productoInv WHERE producto_codigo='$codigo'");
 	    if($check_codigo->rowCount()>0){
 	        echo '
 	            <div class="notification is-danger is-light">
@@ -106,7 +106,7 @@
     /*== Verificando nombre ==*/
     if($nombre!=$datos['producto_nombre']){
 	    $check_nombre=conexion();
-	    $check_nombre=$check_nombre->query("SELECT producto_nombre FROM producto WHERE producto_nombre='$nombre'");
+	    $check_nombre=$check_nombre->query("SELECT producto_nombre FROM productoInv WHERE producto_nombre='$nombre'");
 	    if($check_nombre->rowCount()>0){
 	        echo '
 	            <div class="notification is-danger is-light">
@@ -123,7 +123,7 @@
     /*== Verificando categoria ==*/
     if($categoria!=$datos['categoria_id']){
 	    $check_categoria=conexion();
-	    $check_categoria=$check_categoria->query("SELECT categoria_id FROM categoria WHERE categoria_id='$categoria'");
+	    $check_categoria=$check_categoria->query("SELECT categoria_id FROM categoriaInv WHERE categoria_id='$categoria'");
 	    if($check_categoria->rowCount()<=0){
 	        echo '
 	            <div class="notification is-danger is-light">
@@ -139,7 +139,7 @@
 
     /*== Actualizando datos ==*/
     $actualizar_producto=conexion();
-    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_codigo=:codigo,producto_nombre=:nombre,producto_precio=:precio,producto_stock=:stock,categoria_id=:categoria WHERE producto_id=:id");
+    $actualizar_producto=$actualizar_producto->prepare("UPDATE productoInv SET producto_codigo=:codigo,producto_nombre=:nombre,producto_precio=:precio,producto_stock=:stock,categoria_id=:categoria WHERE producto_id=:id");
 
     $marcadores=[
         ":codigo"=>$codigo,

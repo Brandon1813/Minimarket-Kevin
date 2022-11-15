@@ -44,7 +44,7 @@
 
     /*== Verificando nombre ==*/
     $check_nombre=conexion();
-    $check_nombre=$check_nombre->query("SELECT categoria_nombre FROM categorianv  WHERE categoria_nombre='$nombre'");
+    $check_nombre=$check_nombre->query("SELECT categoria_nombre FROM categoriaInv  WHERE categoria_nombre='$nombre'");
     if($check_nombre->rowCount()>0){
         echo '
             <div class="notification is-danger is-light">
@@ -59,7 +59,7 @@
 
     /*== Guardando datos ==*/
     $guardar_categoria=conexion();
-    $guardar_categoria=$guardar_categoria->prepare("INSERT INTO categorianv (categoria_nombre,categoria_ubicacion) VALUES(:nombre,:ubicacion)");
+    $guardar_categoria=$guardar_categoria->prepare("INSERT INTO categoriaInv (categoria_nombre,categoria_ubicacion) VALUES(:nombre,:ubicacion)");
 
     $marcadores=[
         ":nombre"=>$nombre,

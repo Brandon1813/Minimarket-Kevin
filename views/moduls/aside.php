@@ -20,7 +20,7 @@
   <line x1="4" y1="20" x2="18" y2="20" />
 </svg>
                          <p>
-                             Estadísticas
+                             Estadísticas 
                              <i class="right fas fa-angle-left"></i>
                          </p>
                      </a>

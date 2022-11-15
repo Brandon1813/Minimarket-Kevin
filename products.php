@@ -7,7 +7,7 @@ require 'models/database.php';
 $db = new Database();
 $con = $db->conectar();
 
-$comando = $con->prepare("SELECT id, nombre,descripcion, precio FROM productos WHERE activo=1");
+$comando = $con->prepare("SELECT producto_id, producto_nombre,producto_descripcion, producto_precio FROM productoInv WHERE producto_activo=1");
 $comando->execute();
 $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
 

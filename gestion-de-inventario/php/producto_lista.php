@@ -6,7 +6,7 @@
 
 	if(isset($busqueda) && $busqueda!=""){
 
-		$consulta_datos="SELECT $campos FROM productoInv INNER JOIN categoriaInv ON producto.categoria_id=categoria.categoria_id INNER JOIN usuarioInv ON productoInv.usuario_id=usuarioInv.usuario_id WHERE productoInv.producto_codigo LIKE '%$busqueda%' OR productoInv.producto_nombre LIKE '%$busqueda%' ORDER BY productoInv.producto_nombre ASC LIMIT $inicio,$registros";
+		$consulta_datos="SELECT $campos FROM productoInv INNER JOIN categoriaInv ON productoInv.categoria_id=categoriaInv.categoria_id INNER JOIN usuarioInv ON productoInv.usuario_id=usuarioInv.usuario_id WHERE productoInv.producto_codigo LIKE '%$busqueda%' OR productoInv.producto_nombre LIKE '%$busqueda%' ORDER BY productoInv.producto_nombre ASC LIMIT $inicio,$registros";
 
 		$consulta_total="SELECT COUNT(producto_id) FROM productoInv WHERE producto_codigo LIKE '%$busqueda%' OR producto_nombre LIKE '%$busqueda%'";
 

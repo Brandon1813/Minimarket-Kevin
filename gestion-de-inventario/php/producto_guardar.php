@@ -115,7 +115,7 @@
 	$img_dir='../img/producto/';
 
 
-	/*== Comprobando si se ha seleccionado una imagen ==*/
+	/* /* /*== Comprobando si se ha seleccionado una imagen ==*/
 	if($_FILES['producto_foto']['name']!="" && $_FILES['producto_foto']['size']>0){
 
         /* Creando directorio de imagenes */
@@ -188,7 +188,8 @@
 	}else{
 		$foto="";
 	}
-
+    
+ 
 
 	/*== Guardando datos ==*/
     $guardar_producto=conexion();

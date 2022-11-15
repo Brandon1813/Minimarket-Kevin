@@ -1,14 +1,15 @@
+
 <?php
 session_start(); //inicio sesion//
-if(!isset($_SESSION['index'])){
+if(!isset($_SESSION['login'])){
         echo '
         <script>
         window.location = "iniciar.php";
         </script>
         ';
-        die(); 
+         die(); 
         session_destroy(); // cerrar sesion //
-    }
         
-session_destroy();
+         session_destroy(); 
+    }
 ?>
