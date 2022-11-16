@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2022 a las 22:28:57
+-- Tiempo de generación: 16-11-2022 a las 03:39:22
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -44,14 +44,22 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Estructura de tabla para la tabla `categoriainv`
 --
 
-CREATE TABLE `categorias` (
-  `CatID` int(11) NOT NULL,
-  `CatNombre` varchar(15) NOT NULL,
-  `CatDescripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `categoriainv` (
+  `categoria_id` int(7) NOT NULL,
+  `categoria_nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `categoria_ubicacion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `categoriainv`
+--
+
+INSERT INTO `categoriainv` (`categoria_id`, `categoria_nombre`, `categoria_ubicacion`) VALUES
+(4, 'abarrotes', 'fila 1'),
+(5, 'Frutas', 'Fila1');
 
 -- --------------------------------------------------------
 
@@ -113,32 +121,21 @@ CREATE TABLE `inventario` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Estructura de tabla para la tabla `productoinv`
 --
 
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
-  `precio` decimal(8,2) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `descripcion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `descuento` tinyint(4) NOT NULL,
-  `fecha_alta` datetime DEFAULT NULL,
-  `activo` tinyint(4) NOT NULL,
-  `Cat_ProductosID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`id`, `precio`, `nombre`, `descripcion`, `descuento`, `fecha_alta`, `activo`, `Cat_ProductosID`) VALUES
-(1, '2500.00', 'Cerveza', 'Poker', 0, NULL, 1, NULL),
-(2, '1800.00', 'Atun', 'Issabella', 0, NULL, 1, NULL),
-(3, '30000.00', 'vino', 'Gato Negro', 0, NULL, 1, NULL),
-(4, '2800.00', 'leche', 'Alqueria', 0, NULL, 1, NULL),
-(5, '30000.00', 'lentejas', '1 Lb', 0, NULL, 1, NULL),
-(6, '4000.00', 'frijoles', '1 Lb', 0, NULL, 1, NULL),
-(7, '2300.00', 'papa', 'Parda', 0, NULL, 1, NULL);
+CREATE TABLE `productoinv` (
+  `producto_id` int(20) NOT NULL,
+  `producto_codigo` varchar(70) COLLATE utf8_spanish2_ci NOT NULL,
+  `producto_nombre` varchar(70) COLLATE utf8_spanish2_ci NOT NULL,
+  `producto_precio` decimal(30,2) NOT NULL,
+  `producto_stock` int(25) NOT NULL,
+  `producto_foto` varchar(500) COLLATE utf8_spanish2_ci NOT NULL,
+  `categoria_id` int(7) NOT NULL,
+  `usuario_id` int(10) NOT NULL,
+  `producto_activo` tinyint(4) DEFAULT NULL,
+  `producto_descripcion` varchar(500) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -198,6 +195,7 @@ CREATE TABLE `telefonoproveedor` (
 CREATE TABLE `usuario` (
   `ID_usuario` int(11) NOT NULL,
   `nombre_completo` varchar(70) NOT NULL,
+  `usuario_apellido` varchar(50) NOT NULL,
   `correo` varchar(70) NOT NULL,
   `usuario` varchar(30) NOT NULL,
   `contrasena` varchar(50) NOT NULL
@@ -207,9 +205,35 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID_usuario`, `nombre_completo`, `correo`, `usuario`, `contrasena`) VALUES
-(5, 'yeison garcia', 'yeison123@gmail.com', 'yeison12', '123'),
-(6, 'Brandon Viveros', 'brandon18@gmail.com', 'Brandon18', '1813');
+INSERT INTO `usuario` (`ID_usuario`, `nombre_completo`, `usuario_apellido`, `correo`, `usuario`, `contrasena`) VALUES
+(1, 'Administrador', 'Principal', 'admin18@gmail.com', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcE'),
+(5, 'yeison garcia', '', 'yeison123@gmail.com', 'yeison12', '123'),
+(6, 'Brandon Viveros', '', 'brandon18@gmail.com', 'Brandon18', 'Brandon1813'),
+(7, 'Leo', '', 'leo123@gmail.com', 'leo4040', '123456'),
+(10, 'Administrador', 'Principal', '', 'Administrador', 'BrandonAlexis1813');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarioinv`
+--
+
+CREATE TABLE `usuarioinv` (
+  `usuario_id` int(10) NOT NULL,
+  `usuario_nombre` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `usuario_apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `usuario_usuario` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `usuario_clave` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `usuario_email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuarioinv`
+--
+
+INSERT INTO `usuarioinv` (`usuario_id`, `usuario_nombre`, `usuario_apellido`, `usuario_usuario`, `usuario_clave`, `usuario_email`) VALUES
+(1, 'Administrador', 'Principal', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', ''),
+(2, 'Brandon', 'Viveros', 'Admin1', '$2y$10$se.HthW462f/AvKZGA.NHOej9Gpmzs.BIGiqOYkDbRaTZVzfOUxhW', 'brandon18@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -271,10 +295,11 @@ INSERT INTO `ventas_productos` (`VenPro_ID`, `VenCantidad`, `VentValorUnitario`,
 --
 
 --
--- Indices de la tabla `categorias`
+-- Indices de la tabla `categoriainv`
 --
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`CatID`);
+ALTER TABLE `categoriainv`
+  ADD PRIMARY KEY (`categoria_id`),
+  ADD KEY `categoria_id` (`categoria_id`);
 
 --
 -- Indices de la tabla `ciudad_proveedores`
@@ -307,11 +332,11 @@ ALTER TABLE `inventario`
   ADD KEY `IDPro_Inventario` (`IDPro_Inventario`);
 
 --
--- Indices de la tabla `productos`
+-- Indices de la tabla `productoinv`
 --
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Cat_ProductosID` (`Cat_ProductosID`);
+ALTER TABLE `productoinv`
+  ADD PRIMARY KEY (`producto_id`),
+  ADD KEY `id_categoria` (`categoria_id`,`usuario_id`) USING BTREE;
 
 --
 -- Indices de la tabla `productos_proveedores`
@@ -348,6 +373,12 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`ID_usuario`);
 
 --
+-- Indices de la tabla `usuarioinv`
+--
+ALTER TABLE `usuarioinv`
+  ADD PRIMARY KEY (`usuario_id`);
+
+--
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
@@ -368,10 +399,10 @@ ALTER TABLE `ventas_productos`
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- AUTO_INCREMENT de la tabla `categoriainv`
 --
-ALTER TABLE `categorias`
-  MODIFY `CatID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categoriainv`
+  MODIFY `categoria_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -392,10 +423,10 @@ ALTER TABLE `inventario`
   MODIFY `Inv_Codigo_Producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT de la tabla `productoinv`
 --
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `productoinv`
+  MODIFY `producto_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_proveedores`
@@ -425,7 +456,13 @@ ALTER TABLE `telefonoproveedor`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarioinv`
+--
+ALTER TABLE `usuarioinv`
+  MODIFY `usuario_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
@@ -463,10 +500,10 @@ ALTER TABLE `inventario`
   ADD CONSTRAINT `inventario_ibfk_2` FOREIGN KEY (`IDPro_Inventario`) REFERENCES `inventario` (`Inv_Codigo_Producto`);
 
 --
--- Filtros para la tabla `productos`
+-- Filtros para la tabla `productoinv`
 --
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`Cat_ProductosID`) REFERENCES `categorias` (`CatID`);
+ALTER TABLE `productoinv`
+  ADD CONSTRAINT `productoinv_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarioinv` (`usuario_id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `productos_proveedores`
