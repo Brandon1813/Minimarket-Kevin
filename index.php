@@ -1,6 +1,10 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<?php
+//cuando la sesion está iniciada lo envia a index.php/login//
+session_start();
+if(isset($_SESSION['usuario'])){
+    ?>
+    <!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +29,7 @@
         </div> -->
         <ol>
            
-            <li><a href="./iniciar.php">👤Cerrar sesión</a></li>
+            <li><a href="./php/cerrar_sesion.php">👤Cerrar sesión</a></li>
         </ol>
         <label for="check" class="bar">
             <span class="fa fa-bars" id="bars"></span>
@@ -76,3 +80,11 @@
             
             
             
+<?php
+    
+
+}else{
+    header("location: iniciar.php");
+}
+
+?>

@@ -53,13 +53,6 @@ CREATE TABLE `categoriainv` (
   `categoria_ubicacion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `categoriainv`
---
-
-INSERT INTO `categoriainv` (`categoria_id`, `categoria_nombre`, `categoria_ubicacion`) VALUES
-(4, 'abarrotes', 'fila 1'),
-(5, 'Frutas', 'Fila1');
 
 -- --------------------------------------------------------
 
@@ -201,16 +194,7 @@ CREATE TABLE `usuario` (
   `contrasena` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `usuario`
---
 
-INSERT INTO `usuario` (`ID_usuario`, `nombre_completo`, `usuario_apellido`, `correo`, `usuario`, `contrasena`) VALUES
-(1, 'Administrador', 'Principal', 'admin18@gmail.com', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcE'),
-(5, 'yeison garcia', '', 'yeison123@gmail.com', 'yeison12', '123'),
-(6, 'Brandon Viveros', '', 'brandon18@gmail.com', 'Brandon18', 'Brandon1813'),
-(7, 'Leo', '', 'leo123@gmail.com', 'leo4040', '123456'),
-(10, 'Administrador', 'Principal', '', 'Administrador', 'BrandonAlexis1813');
 
 -- --------------------------------------------------------
 
@@ -227,13 +211,6 @@ CREATE TABLE `usuarioinv` (
   `usuario_email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `usuarioinv`
---
-
-INSERT INTO `usuarioinv` (`usuario_id`, `usuario_nombre`, `usuario_apellido`, `usuario_usuario`, `usuario_clave`, `usuario_email`) VALUES
-(1, 'Administrador', 'Principal', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', ''),
-(2, 'Brandon', 'Viveros', 'Admin1', '$2y$10$se.HthW462f/AvKZGA.NHOej9Gpmzs.BIGiqOYkDbRaTZVzfOUxhW', 'brandon18@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -250,17 +227,7 @@ CREATE TABLE `ventas` (
   `CliVenta_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `ventas`
---
 
-INSERT INTO `ventas` (`ID`, `Ven_Nombre`, `Ven_Fecha`, `Ven_Total`, `UsuVen_ID`, `CliVenta_ID`) VALUES
-(11, 'Atun', '2022-06-28', 9000, NULL, NULL),
-(12, 'Cerveza', '2019-02-28', 25000, NULL, NULL),
-(13, 'papa', '2022-02-01', 117300, NULL, NULL),
-(14, 'Vino', '2022-06-05', 900000, NULL, NULL),
-(15, 'leche', '2022-02-08', 249200, NULL, NULL),
-(16, 'frijoles', '2022-06-15', 60000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,18 +244,7 @@ CREATE TABLE `ventas_productos` (
   `Productos_FK` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `ventas_productos`
---
 
-INSERT INTO `ventas_productos` (`VenPro_ID`, `VenCantidad`, `VentValorUnitario`, `VenTotal`, `VentasID_FK`, `Productos_FK`) VALUES
-(1, 5, '1800.00', '9000.00', NULL, NULL),
-(2, 10, '2500.00', '25000.00', NULL, NULL),
-(3, 89, '2800.00', '249200.00', NULL, NULL),
-(4, 30, '30000.00', '900000.00', NULL, NULL),
-(5, 15, '4000.00', '60000.00', NULL, NULL),
-(6, 51, '2300.00', '117300.00', NULL, NULL),
-(7, 20, '1800.00', '36000.00', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -503,13 +459,15 @@ ALTER TABLE `inventario`
 -- Filtros para la tabla `productoinv`
 --
 ALTER TABLE `productoinv`
-  ADD CONSTRAINT `productoinv_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarioinv` (`usuario_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `productoinv_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarioinv` (`usuario_id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `productos_proveedores`
 --
 ALTER TABLE `productos_proveedores`
-  ADD CONSTRAINT `productos_proveedores_ibfk_1` FOREIGN KEY (`ProductosID_FK`) REFERENCES `productos` (`id`),
+  ADD CONSTRAINT `productos_proveedores_ibfk_1` FOREIGN KEY (`ProductosID_FK`) REFERENCES `productoinv` (`producto_id`);
+
+ALTER TABLE `productos_proveedores`
   ADD CONSTRAINT `productos_proveedores_ibfk_2` FOREIGN KEY (`ProveedoresID_FK`) REFERENCES `proveedores` (`ProvRut`);
 
 --
@@ -535,10 +493,65 @@ ALTER TABLE `ventas`
 -- Filtros para la tabla `ventas_productos`
 --
 ALTER TABLE `ventas_productos`
-  ADD CONSTRAINT `ventas_productos_ibfk_1` FOREIGN KEY (`VentasID_FK`) REFERENCES `ventas` (`ID`),
-  ADD CONSTRAINT `ventas_productos_ibfk_2` FOREIGN KEY (`Productos_FK`) REFERENCES `productos` (`id`);
+  ADD CONSTRAINT `ventas_productos_ibfk_1` FOREIGN KEY (`VentasID_FK`) REFERENCES `ventas` (`ID`);
+
+ALTER TABLE `ventas_productos`
+  ADD CONSTRAINT `ventas_productos_ibfk_2` FOREIGN KEY (`Productos_FK`) REFERENCES `productoinv` (`producto_id`);
 COMMIT;
+
+--
+-- Volcado de datos para la tabla `usuarioinv`
+--
+
+INSERT INTO `usuarioinv` (`usuario_id`, `usuario_nombre`, `usuario_apellido`, `usuario_usuario`, `usuario_clave`, `usuario_email`) VALUES
+(1, 'Administrador', 'Principal', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', ''),
+(2, 'Brandon', 'Viveros', 'Admin1', '$2y$10$se.HthW462f/AvKZGA.NHOej9Gpmzs.BIGiqOYkDbRaTZVzfOUxhW', 'brandon18@gmail.com');
+
+--
+-- Volcado de datos para la tabla `categoriainv`
+--
+
+INSERT INTO `categoriainv` (`categoria_id`, `categoria_nombre`, `categoria_ubicacion`) VALUES
+(4, 'abarrotes', 'fila 1'),
+(5, 'Frutas', 'Fila1');
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`ID_usuario`, `nombre_completo`, `usuario_apellido`, `correo`, `usuario`, `contrasena`) VALUES
+(1, 'Administrador', 'Principal', 'admin18@gmail.com', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcE'),
+(5, 'yeison garcia', '', 'yeison123@gmail.com', 'yeison12', '123'),
+(6, 'Brandon Viveros', '', 'brandon18@gmail.com', 'Brandon18', 'Brandon1813'),
+(7, 'Leo', '', 'leo123@gmail.com', 'leo4040', '123456'),
+(10, 'Administrador', 'Principal', '', 'Administrador', 'BrandonAlexis1813');
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`ID`, `Ven_Nombre`, `Ven_Fecha`, `Ven_Total`, `UsuVen_ID`, `CliVenta_ID`) VALUES
+(11, 'Atun', '2022-06-28', 9000, NULL, NULL),
+(12, 'Cerveza', '2019-02-28', 25000, NULL, NULL),
+(13, 'papa', '2022-02-01', 117300, NULL, NULL),
+(14, 'Vino', '2022-06-05', 900000, NULL, NULL),
+(15, 'leche', '2022-02-08', 249200, NULL, NULL),
+(16, 'frijoles', '2022-06-15', 60000, NULL, NULL);
+
+--
+-- Volcado de datos para la tabla `ventas_productos`
+--
+
+INSERT INTO `ventas_productos` (`VenPro_ID`, `VenCantidad`, `VentValorUnitario`, `VenTotal`, `VentasID_FK`, `Productos_FK`) VALUES
+(1, 5, '1800.00', '9000.00', NULL, NULL),
+(2, 10, '2500.00', '25000.00', NULL, NULL),
+(3, 89, '2800.00', '249200.00', NULL, NULL),
+(4, 30, '30000.00', '900000.00', NULL, NULL),
+(5, 15, '4000.00', '60000.00', NULL, NULL),
+(6, 51, '2300.00', '117300.00', NULL, NULL),
+(7, 20, '1800.00', '36000.00', NULL, NULL);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
