@@ -38,6 +38,7 @@
 					<label>Stock</label>
 				  	<input class="input" type="text" name="producto_stock" pattern="[0-9]{1,25}" maxlength="25" required >
 				</div>
+		
 		  	</div>
 		  	<div class="column">
 				<label>Categoría</label><br>

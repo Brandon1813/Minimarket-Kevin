@@ -6,7 +6,7 @@ require '../models/database.php';
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
-    $id = isset($_POST['id']) ? $_POST['id'] : 0;
+    $id = isset($_POST['producto_id']) ? $_POST['producto_id'] : 0;
 
     if ($action == 'eliminar') {
         $datos['ok'] = eliminar($id);
@@ -31,8 +31,8 @@ echo json_encode($datos);
 function eliminar($id)
 {
     if ($id > 0) {
-        if (isset($_SESSION['factura']['productos'][$id])) {
-            unset($_SESSION['factura']['productos'][$id]);
+        if (isset($_SESSION['factura']['productoinv'][$id])) {
+            unset($_SESSION['factura']['productoinv'][$id]);
             return true;
         }
     } else {
@@ -44,16 +44,16 @@ function agregar($id, $cantidad)
 {
     $res = 0;
     if ($id > 0 && $cantidad > 0 && is_numeric($cantidad)) {
-        if (isset($_SESSION['factura']['productos'][$id])) {
-            $_SESSION['factura']['productos'][$id] = $cantidad;
+        if (isset($_SESSION['factura']['productoinv'][$id])) {
+            $_SESSION['factura']['productoinv'][$id] = $cantidad;
 
             $db = new Database();
             $con = $db->conectar();
-            $sql = $con->prepare("SELECT precio, descuento FROM productos WHERE id=? AND activo=1");
+            $sql = $con->prepare("SELECT producto_precio, descuento FROM productoinv WHERE producto_id=? AND producto_activo=1");
             $sql->execute([$id]);
             $producto = $sql->fetch(PDO::FETCH_ASSOC);
             $descuento = $producto['descuento'];
-            $precio = $producto['precio'];
+            $precio = $producto['producto_precio'];
             $oferta= $precio - (($precio * $descuento) / 100);
             $res = $cantidad * $oferta;
 

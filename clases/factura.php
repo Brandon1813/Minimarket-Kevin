@@ -2,7 +2,7 @@
 
 require '../models/configuracion.php';
 
-if (isset($_POST['id'])) {
+if (isset($_POST['producto_id'])) {
 
     $id = $_POST['id'];
     $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : 1;
@@ -12,13 +12,13 @@ if (isset($_POST['id'])) {
 
     if ($token == $token_tmp && $cantidad > 0 && is_numeric($cantidad)) {
 
-        if (isset($_SESSION['factura']['productos'][$id])) {
-            $_SESSION['factura']['productos'][$id] += $cantidad;
+        if (isset($_SESSION['factura']['productoinv'][$id])) {
+            $_SESSION['factura']['productoinv'][$id] += $cantidad;
         } else {
-            $_SESSION['factura']['productos'][$id] = $cantidad;
+            $_SESSION['factura']['productoinv'][$id] = $cantidad;
         }
 
-        $datos['numero'] = count($_SESSION['factura']['productos']);
+        $datos['numero'] = count($_SESSION['factura']['productoinv']);
         $datos['ok'] = true;
     } else {
         $datos['ok'] = false;

@@ -10,6 +10,6 @@ define("MONEDA", "$");
 session_start();
 
 $num_select = 0;
-if (isset($_SESSION['factura']['productos'])) {
-    $num_select= count($_SESSION['factura']['productos']);
+if (isset($_SESSION['factura']['productoinv'])) {
+    $num_select= count($_SESSION['factura']['productoinv']);
 }

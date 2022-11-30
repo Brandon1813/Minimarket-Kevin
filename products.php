@@ -65,27 +65,27 @@ $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
                         <div class="card shadow-sm">
 
                             <?php
-                            $id = $row['id'];
+                            $id = $row['producto_id'];
                             $imagen = "assets/img/productos/$id/vanish.jpg";
 
                             if (!file_exists($imagen)) {
                                 $imagen = "assets/img/no_photo.jpg";
                             }
                             ?>
-                            <a href="details.php?id=<?php echo $row['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
+                            <a href="details.php?id=<?php echo $row['producto_id']; ?>&token=<?php echo hash_hmac('sha1', $row['producto_id'], KEY_TOKEN); ?>">
                                 <img src="<?php echo $imagen; ?>" class="card-img-top img-thumbnail">
                             </a>
 
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
-                                <h6 class="card-title"><?php echo $row['descripcion']; ?></h6>
-                                <p class="card-text"><?php echo MONEDA . ' ' . number_format($row['precio'], 2, '.', ','); ?></p>
+                                <h5 class="card-title"><?php echo $row['producto_nombre']; ?></h5>
+                                <h6 class="card-title"><?php echo $row['producto_descripcion']; ?></h6>
+                                <p class="card-text"><?php echo MONEDA . ' ' . number_format($row['producto_precio'], 2, '.', ','); ?></p>
 
                                 <div class=" ">
                                     <div class="btn-group">
  
                                     </div>
-                                    <a class="btn btn-primary d-block" onClick="addProducto(<?php echo $row['id']; ?>, '<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>')">Agregar</a>
+                                    <a class="btn btn-primary d-block" onClick="addProducto(<?php echo $row['producto_id']; ?>, '<?php echo hash_hmac('sha1', $row['producto_id'], KEY_TOKEN); ?>')">Agregar</a>
                                 </div>
                             </div>
                         </div>
@@ -97,10 +97,10 @@ $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
-        function addProducto(id, token) {
+        function addProducto(producto_id, token) {
             var url = 'clases/factura.php';
             var formData = new FormData();
-            formData.append('id', id);
+            formData.append('producto_id', producto_id);
             formData.append('token', token);
 
             fetch(url, {

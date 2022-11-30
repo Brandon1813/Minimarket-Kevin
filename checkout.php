@@ -4,7 +4,7 @@
 require 'models/configuracion.php';
 require 'models/database.php';
 
-$productos = isset($_SESSION['factura']['productos']) ? $_SESSION['factura']['productos'] : null;
+$productos = isset($_SESSION['factura']['productoinv']) ? $_SESSION['factura']['productoinv'] : null;
 
 $db = new Database();
 $con = $db->conectar();
@@ -13,7 +13,7 @@ $list_facture = array();
 
 if ($productos != null) {
     foreach ($productos as $key => $producto) {
-        $sql = $con->prepare("SELECT id, nombre, precio, descuento, $producto AS cantidad FROM productos WHERE id=? AND activo=1");
+        $sql = $con->prepare("SELECT producto_id, producto_nombre, producto_precio, descuento, $producto AS cantidad FROM productoInv WHERE producto_id=? AND producto_activo=1");
         $sql->execute([$key]);
         $list_facture[] = $sql->fetch(PDO::FETCH_ASSOC);
     }
@@ -74,16 +74,16 @@ if ($productos != null) {
                         } else {
                             $total = 0;
                             foreach ($list_facture as $producto) {
-                                $_id = $producto['id'];
+                                $_id = $producto['producto_id'];
                                 $descuento = $producto['descuento'];
-                                $precio = $producto['precio'];
+                                $precio = $producto['producto_precio'];
                                 $cantidad = $producto['cantidad'];
                                 $oferta = $precio - (($precio * $descuento) / 100);
                                 $subtotal = $cantidad * $oferta;
                                 $total += $subtotal;
                         ?>
                                 <tr>
-                                    <td><?php echo $producto['nombre']; ?></td>
+                                    <td><?php echo $producto['producto_nombre']; ?></td>
                                     <td><?php echo MONEDA . number_format($oferta, 2, '.', ','); ?></td>
                                     <td><input type="number" id="cantidad_<?php echo $_id; ?>" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)" /></td>
 
@@ -149,12 +149,12 @@ if ($productos != null) {
             botonElimina.value = recipient
         })
 
-        function actualizaCantidad(cantidad, id) {
+        function actualizaCantidad(cantidad, producto_id) {
 
             let url = 'clases/actualizar_factura.php';
             let formData = new FormData();
             formData.append('action', 'agregar');
-            formData.append('id', id);
+            formData.append('producto_id', id);
             formData.append('cantidad', cantidad);
 
             fetch(url, {
@@ -189,7 +189,7 @@ if ($productos != null) {
             let url = 'clases/actualizar_factura.php';
             let formData = new FormData();
             formData.append('action', 'eliminar');
-            formData.append('id', recipient);
+            formData.append('producto_id', recipient);
 
             fetch(url, {
                     method: 'POST',
