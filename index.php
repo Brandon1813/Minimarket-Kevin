@@ -3,7 +3,7 @@
 session_start();
 if(isset($_SESSION['usuario'])){
     ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,6 @@ if(isset($_SESSION['usuario'])){
             <span class="fa fa-search"></span>
         </div> -->
         <ol>
-           
             <li><a href="./php/cerrar_sesion.php">👤Cerrar sesión</a></li>
         </ol>
         <label for="check" class="bar">
