@@ -46,6 +46,57 @@ main{
     backdrop-filter: blur(10px);
     background-color: #4285F4;
 }
+.caja_olvido_contrasena{
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color:#fff;
+    color:#153a74;
+    padding: 50px;
+    margin: 100px;
+    margin-left: 1%;
+    margin-top: -3.5%;
+    text-align: center; 
+    border-radius: 20px;
+    border: 1px solid grey;
+}
+.color_trasero{
+    display: flex;
+    position: relative;
+    margin-left: 600px;
+    margin-top: 150px;
+    background-color: #4285F4;
+    height: 250px;
+    width: 700px;
+}
+
+.caja_olvido_contrasena input{
+    padding: 10px;
+    margin-top: 35px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.caja_olvido_contrasena button{
+    width: 90px;
+    height: 35px;
+    margin: 10px;
+    margin-left: 35%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: #4285F4;
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 14px;
+}
+
+.caja_olvido_contrasena button:hover{
+    background-color: #153a74;
+    color:#fff;
+   
+}   
 
 .caja__trasera div{
     margin: 100px 40px;

@@ -15,7 +15,7 @@
     ?>
     <div class="columns">
         <div class="column">
-            <form action="" method="POST" autocomplete="off" >
+            <form action="" method="POST" autocomplete="on" >
                 <input type="hidden" name="modulo_buscador" value="producto">
                 <div class="field is-grouped">
                     <p class="control is-expanded">
@@ -31,9 +31,9 @@
     <?php }else{ ?>
     <div class="columns">
         <div class="column">
-            <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off" >
-                <input type="hidden" name="modulo_buscador" value="producto"> 
-                <input type="hidden" name="eliminar_buscador" value="producto">
+            <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="on" >
+                <input type="hidden" name="modulo_buscador" value="productoinv"> 
+                <input type="hidden" name="eliminar_buscador" value="productoinv">
                 <p>Estas buscando <strong>“<?php echo $_SESSION['busqueda_producto']; ?>”</strong></p>
                 <br>
                 <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
